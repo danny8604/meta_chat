@@ -3,8 +3,13 @@
 import { FieldValues, useForm } from "react-hook-form";
 import { HiPaperAirplane } from "react-icons/hi";
 import MessageComposerInput from "../inputs/MessageComposerInput";
+import { sendMessages } from "@/lib/api";
 
-const MessageComposer = () => {
+interface MessageComposerProps {
+  conversationId: string;
+}
+
+const MessageComposer = ({ conversationId }: MessageComposerProps) => {
   const {
     register,
     handleSubmit,
@@ -17,8 +22,11 @@ const MessageComposer = () => {
   });
 
   const onSubmit = async (data: FieldValues) => {
-    console.log(data);
     setValue("message", "", { shouldValidate: true });
+    await sendMessages({
+      message: data.message,
+      conversationId: conversationId,
+    });
   };
 
   return (

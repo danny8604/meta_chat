@@ -20,7 +20,7 @@ const UserBox = ({ user }: UserBox) => {
     const data = await startConversation({ userId: user.id });
 
     if (data) {
-      router.push(`/conversations/${user.id}`);
+      router.push(`/conversations/${data.id}`);
     }
     setIsLoading(false);
   };

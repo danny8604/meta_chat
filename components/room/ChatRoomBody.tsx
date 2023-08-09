@@ -1,70 +1,21 @@
 "use client";
 
-import { useRef } from "react";
+import { Message, User } from "@prisma/client";
+import { useRef, useState } from "react";
 
-const ChatRoomBody = () => {
+interface ChatRoomBodyProps {
+  initialMessages?: Message[];
+}
+
+const ChatRoomBody = ({ initialMessages = [] }: ChatRoomBodyProps) => {
   const bottomRef = useRef<HTMLDivElement>(null);
+  const [messages, setMessages] = useState(initialMessages);
 
   return (
     <div className="h-full overflow-y-auto">
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
-      <p>123</p>
+      {messages.map((message) => (
+        <p key={message.id}>{message.body}</p>
+      ))}
       <div className="pt-24" ref={bottomRef} />
     </div>
   );

@@ -9,5 +9,5 @@ export default function ConversationId({
 }: {
   params: ConversationIdProps;
 }) {
-  return <ChatRoom />;
+  return <ChatRoom conversationId={params.conversationId} />;
 }

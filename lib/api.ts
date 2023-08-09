@@ -27,7 +27,34 @@ export const startConversation: startConversation = async ({
       name,
     });
 
-    console.log(data, "<<<<<<<<<<<<<< 🐧🐧🐧🐧🐧");
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+type SendMessages = ({
+  message,
+  image,
+  conversationId,
+}: {
+  message?: string;
+  image?: any;
+  conversationId: any;
+}) => Promise<void>;
+
+export const sendMessages: SendMessages = async ({
+  message,
+  image,
+  conversationId,
+}) => {
+  try {
+    const { data } = await axios.post("/api/messages", {
+      message,
+      image,
+      conversationId,
+    });
+    console.log(data, "<<<<<<<<<<<<<< data 🐧🐧");
 
     return data;
   } catch (err) {
